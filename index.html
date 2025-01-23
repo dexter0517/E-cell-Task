@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li id="symbol" onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li><a href="index2.html">Home</a></li>
+            <li><a href="index.html">Grid</a></li>
+            <li><a href="https://www.linkedin.com/in/mayankagarwalww/" target="_blank">LinkedIn</a></li>
+        </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="index2.html">Home</a></li>
+                <li class="hideOnMobile"><a href="index.html">Grid</a></li>
+                <li class="hideOnMobile"><a href="https://www.linkedin.com/in/mayankagarwalww/" target="_blank">LinkedIn</a></li>
+                <li class="menu-button" id="symbol" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul>
+    </nav>
+    <main class="container">
+        <div class="box gradient"></div>
+        <div class="box logo">
+            <img src="e-cell logo.png" alt="E-cell Logo">
+        </div>
+        <div class="box grid-container">
+            <div class="grid">
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" ></div>
+                <div class="square" id="last-square"></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function showSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+
+        function hideSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+
+            document.addEventListener("DOMContentLoaded", () => {
+        const squares = document.querySelectorAll(".square");
+        const lastSquare = document.getElementById("last-square");
+        let clickSequence = [];
+
+        squares.forEach((square, index) => {
+            square.addEventListener("click", () => {
+                if (square !== lastSquare) {
+                    square.style.backgroundColor = "red";
+                    clickSequence.push(index);
+                } else {
+                    clickSequence.forEach((i) => {
+                        squares[i].style.backgroundColor = "blue";
+                    });
+                    clickSequence = [];
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
